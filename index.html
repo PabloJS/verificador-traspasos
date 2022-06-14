@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>A Basic HTML5 Template</title>
+  <title>Validador de Traspasos - LCDEFantasy</title>
   <meta name="description" content="Validador de Traspasos - LCDEFantasy">
   <meta name="author" content="LCDEFantasy">
 
@@ -39,13 +39,13 @@
         <div class="row">
           <div class="col">
             <ul class="list-group">
-              <li class="list-group-item" v-for="item in lista1">{{item}}</li>
+              <li class="list-group-item" v-for="item in lista1"><i class="bi-trash" aria-hidden="true" @click="elimina1(item)"></i> {{item}}</li>
               <li class="list-group-item active">Total: {{total1}}</li>
             </ul>
           </div>
           <div class="col">
             <ul class="list-group">
-              <li class="list-group-item" v-for="item in lista2">{{item}}</li>
+              <li class="list-group-item" v-for="item in lista2"><i class="bi-trash" aria-hidden="true" @click="elimina2(item)"></i> {{item}}</li>
               <li class="list-group-item active">Total: {{total2}}</li>
             </ul>
           </div>
@@ -108,9 +108,23 @@
                 this.valor1 = '';
               }
             },
+            elimina1(item) {
+              for( var i = 0; i < this.lista1.length; i++){                   
+                  if ( this.lista1[i] === item) { 
+                    this.lista1.splice(i, 1); 
+                  }
+              }
+            },
             agrega2() {
               this.lista2.push(parseInt(this.valor2))
               this.valor2 = '';
+            },
+            elimina2(item) {
+              for( var i = 0; i < this.lista2.length; i++){                   
+                  if ( this.lista2[i] === item) { 
+                    this.lista2.splice(i, 1); 
+                  }
+              }
             }
           }
         }).mount('#app')
